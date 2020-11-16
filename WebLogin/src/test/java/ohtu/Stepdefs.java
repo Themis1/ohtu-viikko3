@@ -23,10 +23,23 @@ public class Stepdefs {
         element.click();   
     }    
     
+    @Given("user is selected")
+    public void userIsSelected() {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));       
+        element.click();   
+    }
+
+
     @When("correct username {string} and password {string} are given")
     public void correctUsernameAndPasswordAreGiven(String username, String password) {
         logInWith(username, password);
-    }    
+    }   
+    
+    // @When("correct username {string} and password {string} and passwordConfirmation {string} are given")
+    // public void correctUsernameAndPasswordAreGiven(String username, String password, String passwordConfirmation) {
+    //     createUser(username, password, passwordConfirmation);
+    // }
     
     @Then("user is logged in")
     public void userIsLoggedIn() {
