@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -17,28 +19,24 @@ public class Main {
         Gson mapper = new Gson();
         Player[] players = mapper.fromJson(bodyText, Player[].class);
         
-        System.out.println("Oliot:");
-        for (Player player : players) {
-            System.out.println(player);
-        }   
-
-        // ArrayList[] suomalaiset = new ArrayList[10];
+        // System.out.println("Oliot:");
         // for (Player player : players) {
-        //     if (player.getNationality() == "FIN") {
-        //         nimi = player.getName();
-        //         maalit = player.getGoals() + player.getAssists();
-        //         ArrayList[] pelaaja = new ArrayList[10];
-        //         pelaaja[0] = maalit;
-        //         pelaaja[1] = player;
-        //         suomalaiset.append(pelaaja);
-        //     }
-        // } 
-        // suomalaiset.sort();
+        //     System.out.println(player);
+        // }   
 
-        // System.out.println("Players from FIN");
-        // for (ArrayList pelaaja : suomalaiset) {
-        //     System.out.println(pelaaja[1]);
-        // }
+        ArrayList<Player> suomalaiset = new ArrayList<Player>();
+        for (Player player : players) {
+            if (player.getNationality().equals("FIN")) {
+                suomalaiset.add(player);
+            }
+        } 
+        Collections.sort(suomalaiset, Comparator.comparing(Player::pisteet));
+        // Collections.sort(suomalaiset, Collections.reverseOrder());
+
+        System.out.println("Players from FIN");
+        for (Player player : suomalaiset) {
+            System.out.println(player);
+        }
 
 
     }

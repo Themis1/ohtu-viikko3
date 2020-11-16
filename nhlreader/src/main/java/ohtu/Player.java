@@ -15,35 +15,35 @@ public class Player {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setNatiotality(String nationality) {
         this.nationality = nationality;
     }
     public String getNationality() {
-        return nationality;
+        return this.nationality;
     }
 
     public void setAssists(Integer assists) {
         this.assists = assists;
     }
     public Integer getAssists() {
-        return assists;
+        return this.assists;
     }
 
     public void setGoals(Integer goals) {
         this.goals = goals;
     }
     public Integer getGoals() {
-        return goals;
+        return this.goals;
     }
 
     public void setPenalties(Integer penalties) {
         this.penalties = penalties;
     }
     public Integer getPenalties() {
-        return penalties;
+        return this.penalties;
     }
 
     public void setTeam(String team) {
@@ -51,19 +51,23 @@ public class Player {
     }
 
     public String getTeam() {
-        return team;
+        return this.team;
     }
 
     public void setGames(Integer games) {
         this.games = games;
     }
     public Integer getGams() {
-        return games;
+        return this.games;
+    }
+
+    public Integer pisteet() {
+        return this.goals + this.assists;
     }
 
     @Override
     public String toString() {
-        return (name + ", team: " + team + ", goals: " + goals);
+        return String.format("%-20s",this.name) + ", team: " + String.format("%-5s",this.team) + ", goals and assists: " + this.goals + " + " + this.assists + " = " + pisteet();
     }
       
 }
