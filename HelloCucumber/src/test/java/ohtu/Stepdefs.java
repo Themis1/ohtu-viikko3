@@ -1,0 +1,51 @@
+
+package ohtu;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+import static org.junit.Assert.*;
+
+public class Stepdefs {
+    Counter counter;
+    
+    @Given("Counter is initialized")
+    public void counterIsInitialized() {
+        counter = new Counter();
+    }
+
+    @When("it is incremented")
+    public void itIsIncremented() {
+        counter.increase();
+    }
+
+    @Then("the value should be {int}")
+    public void theValueShouldBe(Integer val) {
+        assertEquals(val.intValue(), counter.value());
+    }
+
+    @When("it is incremented by {int}")
+    public void itIsIncrementedBy(Integer val) {
+         counter.increment(val);       
+    }  
+    
+    // @Then("the value should be {int}")
+    // public void theValueShouldBeMore(Integer val) {
+    //     assertEquals(val.intValue(), counter.value());
+    // }    
+
+    @When("it is reset")
+    public void itIsReset() {
+        // Write code here that turns the phrase above into concrete actions
+        counter.reset();
+        //throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("the value should be zero")
+    public void theValueShouldBeZero() {
+        //assertEquals(val.intValue(), counter.value());
+        assertEquals(0, counter.value());
+    }    
+
+
+}
