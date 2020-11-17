@@ -37,7 +37,6 @@ public class AuthenticationService {
         if (invalidPassword(password) ) {
             status.addError("password should have at least 8 characters");
         }
-
         if (!password.equals(passwordConfirmation)) {
             status.addError("password and password confirmation do not match");
         }
